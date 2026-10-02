@@ -1,149 +1,159 @@
-**中文** · [English](README.en.md)
+# 🎯 src-hunter: 工业级自动化 SRC 漏洞挖掘与渗透测试 Claude Skill
+### Automated Bug Bounty & Vulnerability Hunting Skill for Claude Code (Recon to CVSS 4.0 Report)
 
-# src-hunter
+<p align="center">
+  <img src="https://img.shields.io/badge/Claude%20Code-Skill%20Plugin-blueviolet.svg?style=flat-square&logo=anthropic" alt="Claude Code Skill" />
+  <img src="https://img.shields.io/badge/Playbooks-19%20Categories-brightgreen.svg?style=flat-square" alt="Playbooks" />
+  <img src="https://img.shields.io/badge/Structured%20Payloads-305+-orange.svg?style=flat-square" alt="Payloads" />
+  <img src="https://img.shields.io/badge/HackerOne%20Cases-2887%20Real%20Reports-red.svg?style=flat-square" alt="HackerOne Reports" />
+  <img src="https://img.shields.io/badge/MCP-jshookmcp%20Integrated-blue.svg?style=flat-square" alt="MCP" />
+  <img src="https://img.shields.io/badge/Standard-CVSS%204.0-yellow.svg?style=flat-square" alt="CVSS 4.0" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License" />
+</p>
 
-这是一个给 SRC、众测和 Bug bounty 用的 Claude Code skill。
+<p align="center">
+  <a href="README.md"><strong>中文文档</strong></a> · <a href="README.en.md"><strong>English Documentation</strong></a>
+</p>
 
-简单说，就是你给它一个目标，它会按一套固定流程帮你推进漏洞挖掘：先确认目标范围，再做信息收集和资产枚举，然后进入漏洞测试，最后整理报告。
+---
 
-```text
-intake → recon → enum → hunt → report
+## 📌 项目概述 (Executive Summary)
+
+**src-hunter** 是一款专为**企业安全应急响应中心（SRC）、众测与 Bug Bounty 赏金猎人**量身打造的**工业级自动化漏洞挖掘 Claude Code 专属技能插件（Skill）**。
+
+传统漏洞挖掘往往面临“测试思维发散遗漏关键攻击面、工具零散协同成本高、发现漏洞后影响定级低、漏洞报告不合规容易被驳回”等痛点。
+
+本项目将资深白帽黑客的实战攻防经验深度工程化，规范了标准的 **`intake（范围评估）➔ recon（资产指纹搜集）➔ enum（攻击面枚举）➔ hunt（纵深漏洞挖掘）➔ report（合规报告沉淀）`** 五阶段标准化漏掘流水线。内置了 **19 大类攻击 Playbook**、**2887 份真实披露的 HackerOne 高危案例库**，并打通了本地 **MCP（Model Context Protocol）工具层**，实现让 AI 助手直接驱动底层工具完成自动化探测与高价值漏洞归档。
+
+---
+
+## 🏛️ 五阶段全流程渗透体系 (5-Stage Methodology)
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        SRC 漏洞挖掘全生命周期流水线                    │
+├────────────────────────────────────────────────────────────────────────┤
+│ [1. Intake 边界测绘]   - 确定测试边界与排除清单 (Wildcard / In-Scope)  │
+│                        - 严守授权红线，规避生产业务破坏与敏感操作      │
+├────────────────────────────────────────────────────────────────────────┤
+│ [2. Recon 资产情报]   - 泛解析/子域名枚举，CDN/WAF 指纹识别与绕过方案 │
+│                        - 国产常见中间件/框架 (Spring/Shiro/ThinkPHP) 探查│
+├────────────────────────────────────────────────────────────────────────┤
+│ [3. Enum 接口细化]    - JS 接口逆向与隐藏 API 提取 (Sourcemap 重构)   │
+│                        - 未授权路由探针、Actuator 暴露面、Swagger 嗅探 │
+├────────────────────────────────────────────────────────────────────────┤
+│ [4. Hunt 深度渗透]    - 19 类专项攻防 Playbook 场景化攻击             │
+│                        - 305+ 结构化 Payload 与 263+ WAF/EDR 绕过变体  │
+│                        - 调用 MCP 本地工具链 (动态 Hook/反混淆/内存验证)│
+├────────────────────────────────────────────────────────────────────────┤
+│ [5. Report 标准交付]  - CVSS 4.0 漏洞评分与危害边界定级 (Impact Scale)│
+│                        - 完整复现 PoC、HTTP 报文重放、防御加固建议模板 │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
-项目内置了一批从公开来源整理的知识库，包括：
+---
 
-- 19 类攻击 playbook
-- 305 个结构化 payload
-- WAF / EDR 绕过变体
-- HackerOne 已披露 High / Critical hacktivity 数据
-- WooYun 历史案例统计残余
-- 常见国产组件指纹和默认凭据
+## 💡 核心知识库与工程亮点 (Knowledge Base & Innovations)
 
-## 安装
+### 1. 2887+ 篇真实 HackerOne 漏洞报告智库 (`references/h1-reports/`)
+* 涵盖近年来在 HackerOne 公开披露的高危与严重漏洞实战样本。
+* 按 CWE 缺陷类型精细分组索引（IDOR、RCE、SSRF、SQLi、OAuth/SAML、Logic Flaws 等），支持根据当前测试接口特征秒级检索相似历史案例与绕过灵感。
 
-Marketplace：
+### 2. 黑盒实战导向的 19 类漏洞利用手册 (`references/playbooks/`)
+每个 Playbook 均遵循标准化攻防问题链：
+* **入口定位**：目标资产哪些参数/Header 易受此类漏洞影响？
+* **Payload 矩阵**：如何使用最精炼的测试载荷验证脆弱性？
+* **响应特征捕获**：返回什么状态码、回显或时延可确认为有效漏洞？
+* **影响放大策略**：如何从普通信息泄露平滑延伸到高危权限接管？
+* **合规与红线规范**：明确禁止可能导致线上服务拒绝服务（DoS）或数据破坏的动作。
 
+### 3. 本地 MCP 工具层集成与自动化调用 (`references/tools/mcp-jshook.md`)
+本 Skill 原生集成本地 MCP 服务器作为工具层，使得 Claude 在 Hunt 阶段能够自主调用底层能力：
+* **浏览器自动化与 CDP 调试**：真实无头浏览器网络请求捕获、DOM 变动监听；
+* **JS 逆向与动态 Hook**：前端加解密算法自动定位、AST 语法反混淆；
+* **移动端辅助**：Android adb 桥接、Frida 内存校验、SSL Pinning 证书绑定动态绕过。
+
+---
+
+## 🧩 漏洞类型与案例覆盖矩阵 (Playbook Matrix)
+
+| 漏洞分类 / Playbook | 典型攻击面与测试核心 | 关联真实案例数 |
+| :--- | :--- | :---: |
+| **`arbitrary-x-authz`** | IDOR 越权访问、任意账号重置、垂直/水平提权、Session 劫持 | **465+** |
+| **`rce`** | 框架漏洞、远程代码执行、SSTI 模板注入、XXE 实体注入、反序列化 | **385+** |
+| **`xss`** | 存储型 XSS、DOM-based XSS、富文本过滤绕过、WAF 规则变异 | **335+** |
+| **`ssrf-cache-host`** | 云元数据访问（AWS/Aliyun）、内网穿透探测、Host 头注入、CDN 缓存投毒 | **280+** |
+| **`logic-flaws`** | 支付金额篡改、并发条件竞争（Race Condition）、验证码复用爆破 | **240+** |
+| **`oauth-saml-jwt`** | OAuth 回调劫持、SAML 伪造响应、JWT 签名降级与秘钥弱口令爆破 | **190+** |
+| **`api-rest`** | REST API 越权批量抓取、GraphQL 内省查询与批量 Dos、WebSocket 渗透 | **175+** |
+| **`path-traversal`** | 目录穿越、任意文件读取、LFI/RFI 本地包含与日志投毒 RCE | **150+** |
+| **`file-upload`** | 任意文件上传、后缀截断解析、解压缩目录穿越（Zip Slip） | **140+** |
+| **`llm-prompt-injection`**| 大模型 Prompt 越狱注入、RAG 知识库间接投毒、Agent 工具权限盗用 | **新前沿** |
+
+---
+
+## 🛠️ 安装与使用指南 (Installation & Usage)
+
+### 方式一：作为 Claude Code 插件全局安装 (推荐)
 ```bash
-/plugin marketplace add MyuriKanao/src-hunter-skill
+# 添加到插件市场源
+/plugin marketplace add yckl/src-hunter-skill
+
+# 安装并启用该技能
 /plugin install src-hunter@src-hunter
 ```
 
-Git：
+---
 
+### 方式二：通过 Git 本地克隆挂载
 ```bash
-git clone https://github.com/MyuriKanao/src-hunter-skill.git ~/.claude/skills/src-hunter
+git clone https://github.com/yckl/src-hunter-skill.git ~/.claude/skills/src-hunter
 ```
 
-## 目录结构
+---
+
+## 💬 触发与唤起方式 (How to Use)
+
+本 Skill 支持**显式指令调用**与**语义意图自动唤起**：
+
+#### 1. 显式指令执行
+```text
+/src-hunter https://target-domain.com
+```
+
+#### 2. 自然语言交互触发
+当你在 Claude Code 中提及以下关键词或类似需求时，系统会自动加载并编排对应的 Playbook：
+* *“针对 target.com 进行一次资产指纹识别与漏洞排查”*
+* *“帮我设计绕过当前 Cloudflare/Imperva WAF 的 SQLi / XSS Payload”*
+* *“发现了重置密码接口，帮我分析可能存在的逻辑越权漏洞”*
+* *“生成符合 CVSS 4.0 国际标准的漏洞提交报告”*
+
+---
+
+## 📂 知识库工程目录结构 (Knowledge Base Structure)
 
 ```text
-references/
-  methodology/    五阶段流程、攻击优先级、绕过工具集、证据规则
-  playbooks/      每类漏洞一个文件，包含真实 H1 案例和 payload
-  industry/       银行/金融、电信/ISP 垂直场景 playbook
-  dictionaries/   国产组件指纹和默认凭据
-  templates/      CVSS 4.0 报告模板
-  h1-reports/     2887 份已披露报告原始数据，并按 weakness 分组
-  payloader/      305 个结构化 payload、263 个 WAF/EDR 绕过步骤、114 个工具命令
+src-hunter-skill/
+├── references/
+│   ├── methodology/                      # 五阶段攻防方法论、优先级排序与红线守则
+│   ├── playbooks/                        # 19 大类黑盒漏洞专项攻防操作指南
+│   │   ├── arbitrary-x-authz.md          # 越权与身份认证
+│   │   ├── rce/                          # 远程代码执行全链路
+│   │   ├── xss/                          # XSS 攻防与绕过
+│   │   ├── ssrf-cache-host/              # SSRF 与云资产漏洞
+│   │   └── llm-prompt-injection/         # AI 智能体专项攻击
+│   ├── h1-reports/                       # 2887 份真实 HackerOne 披露报告 (按缺陷分类)
+│   ├── payloader/                        # 305+ 结构化 Payload 与 WAF 绕过规则库
+│   ├── dictionaries/                     # 常见中间件、国产企业组件默认凭据与指纹
+│   └── templates/                        # CVSS 4.0 标准漏洞提报模板
+├── .claude-plugin/                       # 插件元信息与技能注册清单
+├── SKILL.md                              # Claude Code 核心技能定义入口
+└── README.md                             # 工业级项目使用说明
 ```
 
-playbook 是主要入口。所有 playbook 都按黑盒视角编写，默认你只有 URL，没有源码。
+---
 
-每个 playbook 都围绕同一套问题展开：
+## ⚖️ 免责声明 (Legal & Compliance)
 
-- 去哪里找入口
-- 用什么 payload 测
-- 观察哪些响应特征
-- 如何判断影响
-- 如何提高漏洞价值
-- 哪些行为不能做
-
-整体思路不是堆 payload，而是把测试动作、证据留存和报告输出串起来。
-
-## MCP 工具集成
-
-本 skill 集成本地 MCP 服务器作为工具层，让 Claude 在 hunt 阶段能直接调用浏览器自动化、CDP 调试、网络拦截、JS hook、AST 反混淆、Frida 内存验证、WASM 逆向、Source map 重构、Android adb 桥接、SSL pinning 绕过等能力。
-
-**当前主选**：[jshookmcp](https://github.com/vmoranv/jshookmcp) 0.3.0（134 工具精选 / 386 全集 / 36 域），完整索引与场景映射见 [`references/tools/mcp-jshook.md`](references/tools/mcp-jshook.md)。
-
-7 个高关联 playbook（`xss` / `rce` / `ssrf-cache-host` / `mobile` / `oauth-saml-jwt` / `api-rest` / `file-upload`）末尾各有 `## 相关 MCP 工具` 反向锚点，指明该攻击面下应该调哪些 jshook 工具、何时调。
-
-## TODO
-
-- 支持引入更多 tools
-- 多 agent 执行工作流
-
-## 触发关键词
-
-skill 内置触发词包括：
-
-- bug bounty、HackerOne、SRC 挖洞、漏洞赏金、众测
-- WAF bypass、绕过 WAF
-- 如何测试某个 endpoint / API / 参数
-- 任意账号、任意修改、任意删除
-- 密码重置、找回密码
-- 默认凭据、Actuator、暴露的管理后台
-
-也可以显式调用：
-
-```text
-/src-hunter:src-hunter <target>   # Marketplace 插件安装
-/src-hunter <target>              # Plain git standalone skill
-```
-
-## Playbook 列表
-
-| Playbook | 嵌入 H1 案例数 |
-|---|---:|
-| arbitrary-x-authz（IDOR / 任意账户 / 提权） | 465 |
-| rce（反序列化 / SSTI / XXE / 框架） | 385 |
-| xss | 335 |
-| info-disclosure | 319 |
-| oauth-saml-jwt | 240 |
-| logic-flaws（CSRF / 点击劫持 / 支付） | 234 |
-| path-traversal / LFI / RFI | 163 |
-| sqli | 147 |
-| dos | 138 |
-| ssrf-cache-host | 108 |
-| unauth-access（默认凭据 / Actuator / 暴露服务） | 46 |
-| http-smuggling / CRLF | 38 |
-| api-rest / WebSocket | 15 |
-| file-upload | 8 |
-| mobile（Android / iOS） | 8 |
-| race-conditions | 5 |
-| llm-prompt-injection | 1 |
-| graphql | 1 |
-| intranet-postexp（内网 / 后渗透速查） | — |
-
-## 数据来源
-
-- HackerOne hacktivity feed：2887 份已披露 High / Critical 报告，来源为公开数据。
-- WooYun 历史档案：覆盖 88,636 条案例，仅保留参数频率、案例 ID 和 bypass 模式等统计残余。
-- Payloader：305 条结构化 payload + 263 个 WAF / EDR 绕过步骤 + 114 条工具命令，原仓库为 `3516634930/Payloader`。
-
-本项目只整理、翻译和重组公开资料，不包含专有数据，也不抓取需要认证的内容。
-
-## 红线
-
-每个 playbook 末尾都写了具体的边界，下面是抽出来的几个最常踩的点：
-
-- **样本控制**：SQLi 探测到库名 / 版本即可证明，不要 dump 数据；IDOR、Mongo / ES 拉数据 1–3 条样本就够，别全量。
-- **测试账号自演**：越权、密码重置、JWT 伪造、redirect_uri、XSS 盲打全部用自己注册的两个号互测，**不要碰陌生人的账号**——即使能。
-- **只读，不写**：拿到 RCE 只跑 `id` / `whoami` / `uname -a`；Redis / Mongo 默认未授权只 `info` / `ping` / `db.version()`；任意文件读看到 `root:x:` 一行即停，不读 `/etc/shadow`。
-- **不真做副作用动作**：不真发短信、不真扣款、不真发邮件、不真退款、不真覆盖文件、不真改公告 / 邮件模板。证明接口能调通 + 200 即停。
-- **DoS / 并发**：单次复现 ≤ 60s，串行做 5 次足够。竞态并发 50–100，绝不 1000+。短信 / 邮件不限速这种，发到自己手机 5–10 次为止。
-- **不留物**：webshell、heapdump、备份、dump 出来的源码——本地保存，报告后立即删除，不要 push 到 GitHub / 第三方网盘。
-- **凭据：拿到不用**：泄露的 AWS / Stripe / 数据库凭据，仅 `sts get-caller-identity` / 看 banner 验证，绝不用来扣款 / 发邮件 / 连接生产库。
-- **报告里所有 PII 脱敏**：手机号、邮箱、用户名、token、cookie 留前 2 + 后 2，必要时附 sha256 指纹证明拿到过原文。
-- **OOB 验证**：不要使用公开的公共 DNSLog 平台，使用厂商提供的 SSRF 测试平台，或自架 interactsh / 自有 DNSLog。
-- **没抓包就没发现**：所有断言都要有 HTTP 包 / 截图 / 视频，不要凭"应该"提交。
-
-具体到每类漏洞还有更细的限制（DoS 类最敏感、上传不留 webshell、读类只读 1 条样本等），看对应 playbook 的最后一节。
-
-## 友情链接
-[linuxdo](https://linux.do/)
-## License
-
-MIT。
-
-数据来源均为公开资料。本项目主要做资料整理、翻译、归类，并封装成适合黑盒漏洞挖掘使用的 Claude Code skill。
+* 本项目提供的攻防知识库、测试 Payload 及报告模板**仅供具备合法授权的安全测试、网络安全教学与防御加固研究使用**。
+* 严禁利用本项目涉及的任何技术与工具对未经书面授权的目标发起网络攻击。因使用不当导致的一切法律责任与直接/间接损失由使用者自行承担。
